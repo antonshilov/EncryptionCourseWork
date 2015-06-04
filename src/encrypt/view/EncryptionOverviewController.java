@@ -2,7 +2,10 @@ package encrypt.view;
 
 import encrypt.MainApp;
 import encrypt.model.FileModel;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -14,17 +17,23 @@ public class EncryptionOverviewController {
     private TableView<FileModel> fileTableView;
     @FXML
     private TableColumn<FileModel, File> fileStringTableColumn;
+    @FXML
+    private RadioButton encryptionButton;
+    @FXML
+    private RadioButton decryptionButton;
+    @FXML
+    private ChoiceBox<String> choiceBox = new ChoiceBox<>();
 
     @FXML
     private void initialize() {
-        // Initialize the person table with the two columns.
+        choiceBox.getItems().add("Pidor");
+        encryptionButton.fire();
+        decryptionButton.disarm();
         fileStringTableColumn.setCellValueFactory(cellData -> cellData.getValue().birthdayProperty());
     }
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-
-        // Add observable list data to the table
         fileTableView.setItems(mainApp.getFilesList());
     }
 }
