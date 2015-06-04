@@ -1,4 +1,5 @@
 package encrypt.view;
+
 import encrypt.MainApp;
 import encrypt.model.FileModel;
 import javafx.fxml.FXML;
@@ -12,11 +13,14 @@ public class EncryptionOverviewController {
     @FXML
     private TableView<FileModel> fileTableView;
     @FXML
-    private TableColumn<FileModel,File> fileStringTableColumn;
+    private TableColumn<FileModel, File> fileStringTableColumn;
+
     @FXML
     private void initialize() {
         // Initialize the person table with the two columns.
-        fileStringTableColumn.setCellValueFactory(cellData -> cellData.getValue().birthdayProperty());}
+        fileStringTableColumn.setCellValueFactory(cellData -> cellData.getValue().birthdayProperty());
+    }
+
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
