@@ -12,7 +12,7 @@ public class FileModel {
         this.fileProperty = new SimpleObjectProperty<>(new File(path));
     }
 
-    public ObjectProperty<File> birthdayProperty() {
+    public ObjectProperty<File> fileProperty() {
         return fileProperty;
     }
 }
