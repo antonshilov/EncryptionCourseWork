@@ -3,10 +3,8 @@ package encrypt.encrypter;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
-import java.util.HashMap;
-import java.util.Map;
 
-public class Morse {
+public class Morse implements IEncyptor {
     BiMap<Character, String> mapEncode = HashBiMap.create();
 
     public Morse() {
@@ -48,7 +46,7 @@ public class Morse {
         mapEncode.put('0', "-----");
     }
 
-    public String encode(String text) {
+    public String encrypt(String text) {
         String result = "";
         String buff;
         for (char c : text.toCharArray()) {
@@ -59,7 +57,7 @@ public class Morse {
                 if (buff == null) {
                     System.out.println("Unaccepted symbol");
                     return null;
-                }
+                } else result += buff;
                 result += " ";
             }
         }
@@ -67,7 +65,7 @@ public class Morse {
         return text;
     }
 
-    public String decode(String text) {
+    public String decrypt(String text) {
         String result = "";
         String buff;
         BiMap<String, Character> mapDecode = mapEncode.inverse();
@@ -86,10 +84,5 @@ public class Morse {
             result += buff;
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        Morse morse = new Morse();
-        System.out.println(morse.decode(".-.. --- .-.."));
     }
 }
